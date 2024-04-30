@@ -1,8 +1,11 @@
 import ProductComponent from "./components/ProductComponent";
 import ProductListing from "./components/ProductListing";
 import ProductDetails from "./components/ProductDetails"
+import Cart from "./components/Cart";
 
 export const routes=[
     {path:'/',element:<ProductListing/>},
-    {path:'productdetails/:productid',element:<ProductDetails/>}
+    {path:'productdetails/:productid',element:<ProductDetails/>},
+    {path:'/viewcart',element:<Cart/>}
+
 ]

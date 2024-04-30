@@ -31,3 +31,8 @@ export const selectedProduct=(product)=>{
     payload:product
     }
 }
+
+export const cartProduct=(id)=>async(dispatch)=>{
+    const response=await fakeStore.get(`/products/${id}`)
+    dispatch({type:ActionTypes.CART_PRODUCT,payload:response.data})
+}

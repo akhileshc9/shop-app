@@ -1,12 +1,10 @@
-import React, {useEffect,useState} from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios'
 import {useSelector, useDispatch} from 'react-redux'
 import {Link, useParams} from 'react-router-dom'
-import {selectedProduct, fetchProduct, cartProduct} from '../redux/actions/productActions';
-
-function ProductDetails(props) {
-    const product = useSelector((state) => state.product)
-    const [message, setMessage] = useState('');
+import { cartProduct } from '../redux/actions/productActions'
+function Cart(props) {
+    const product = useSelector((state) => state.crtproduct)
     const {
         title,
         price,
@@ -14,21 +12,13 @@ function ProductDetails(props) {
         image,
         description
     } = product
-    const dispatch = useDispatch()
+    const dispatch= useDispatch()
     const {productid} = useParams()
-    const cartClick=()=>{
-        const prod =dispatch(cartProduct(productid))
-        setMessage('Added to cart..!!')
-
-    }
-    
     useEffect(() => {
-       dispatch(fetchProduct(productid))
-    }, [])
-
-
-    return (
-        <div className="ui grid container">
+        dispatch(cartProduct(productid))
+     }, [])
+  return (
+     <div className="ui grid container">
             <div className="ui placeholder segment">
                 <div className="ui two column stackable center aligned grid">
                     <div className="ui vertical divider">AND</div>
@@ -44,17 +34,14 @@ function ProductDetails(props) {
                             </h2>
                             <h3 className="ui brown block header">
                                 {category}</h3>
-                            <p>{description}</p>
-                            <p style={{color:'red'}}>{message}</p>
-                            <Link to='/viewcart'>
-                            <div className="ui vertical animated button" tabIndex="0" onClick={cartClick}>
+                            
+                            <div className="ui vertical animated button" tabIndex="0">
                                 <div className="hidden content">
                                     <i className="shop icon"></i>
                                 </div>
-                                <div className="visible content" onClick={cartClick} >Add To Cart</div>
-                                
+                                <div className="visible content" >Place Order</div>
                             </div>
-                            </Link>
+
                         </div>
 
 
@@ -66,7 +53,7 @@ function ProductDetails(props) {
             </div>
 
         </div>
-    );
+  )
 }
 
-export default ProductDetails;
+export default Cart
