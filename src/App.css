@@ -45,6 +45,12 @@
 .ui.grid.container {
   margin-top: 45px;
 }
+.grid.container{
+  margin-top: 75px;
+  padding: 20px 40px 20px 20px;
+  width: 1350px;
+  height: auto;
+}
 
 .ui.grid > .row {
   background: #fff;

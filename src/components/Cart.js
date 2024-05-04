@@ -36,20 +36,23 @@ function Cart(props) {
         dispatch(cartProduct(productid))
      }, []) */
   return (
-     <div className="ui grid container">
+     <div className="grid container" >
+        <div>
+    <h2>Total Price: ${totalPrice}</h2>
+    </div>
         {product.map((item,index)=>(
             <div key={index} className="ui placeholder segment">
                 <div className="ui two column stackable center aligned grid">
-                    <div className="ui vertical divider">AND</div>
+                    
                     <div className="middle aligned row">
                         <div className="column lp">
                             <img className="ui fluid image"
-                                src={item.image}/>
+                                src={item.image} style={{width:'100px',height:'100px'}}/>
                         </div>
                         <div className="column rp">
-                            <h1>{item.title}</h1>
+                           
                             <h2>
-                                <a className="ui teal tag label">${item.price}</a>
+                                <a className="ui teal tag label" style={{width:'100px',height:'50px',paddingLeft:'17px'}}>${item.price}</a>
                             </h2>
                             <h3 className="ui brown block header">
                                 {item.category}</h3>
@@ -63,7 +66,7 @@ function Cart(props) {
                             </div>
                             <div className='container'>
                             {/* <button onClick={()=>remove(item.id)} className='delete-button'>Delete</button> */}
-                            <Button variant="contained" tabIndex={-1} color='error' onClick={()=>remove(item.id)} startIcon={<DeleteIcon />}>Delete</Button>
+                            <Button variant="contained" tabIndex={-1} style={{width:'200px',height:'50px'}} color='error' onClick={()=>remove(item.id)} startIcon={<DeleteIcon />}>Delete</Button>
                             </div>
                         </div>
                        
@@ -76,13 +79,11 @@ function Cart(props) {
             </div>
             
 ))}
-   <div>
-    <h2>Total Price: ${totalPrice}</h2>
-    </div>
+   
     <Link to='/'>
-    <Button variant="contained" tabIndex={-1} color='success' startIcon={<ArrowBackIcon />}>Back to list</Button>
+    <Button variant="contained" tabIndex={-1} style={{marginLeft:'10px'}} color='success' startIcon={<ArrowBackIcon />}>Back to list</Button>
     </Link>
-    <Button variant="contained" tabIndex={-1} color='primary' startIcon={<ShoppingCartCheckoutIcon />}>Checkout</Button>
+    <Button variant="contained"style={{marginLeft:'950px'}} tabIndex={-1} color='primary' startIcon={<ShoppingCartCheckoutIcon />}>Checkout</Button>
         </div>
   )
 }

@@ -30,8 +30,22 @@ export const cartProduct = (state = initialCart, { type, payload }) => {
     case ActionTypes.CART_PRODUCT:
       return { ...state, products: [...state.products, payload] };
     case ActionTypes.REMOVE_PRODUCT:
-        const filterProducts = state.products.filter((i)=>i.id!==payload)
-      return { ...state, products: filterProducts };
+      const itemIndex = state.products.findIndex(item => item.id === payload);
+      if (itemIndex !== -1) {
+        const updatedCartItems = [...state.products];
+        
+        if (updatedCartItems[itemIndex].quantity > 1) {
+          updatedCartItems[itemIndex].quantity -= 1;
+        } else {
+         
+          updatedCartItems.splice(itemIndex, 1);
+        }
+        return {
+          ...state,
+          products: updatedCartItems,
+        };
+      }
+      return state;
     default:
       return state;
   }
