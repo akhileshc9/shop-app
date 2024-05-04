@@ -51,7 +51,7 @@ function ProductDetails(props) {
                                 <div className="hidden content">
                                     <i className="shop icon"></i>
                                 </div>
-                                <div className="visible content" onClick={cartClick} >Add To Cart</div>
+                                <div className="visible content" >Add To Cart</div>
                                 
                             </div>
                             </Link>

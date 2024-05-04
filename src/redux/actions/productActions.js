@@ -36,3 +36,10 @@ export const cartProduct=(id)=>async(dispatch)=>{
     const response=await fakeStore.get(`/products/${id}`)
     dispatch({type:ActionTypes.CART_PRODUCT,payload:response.data})
 }
+
+export const removeFromCart=(id)=>{
+   return{
+        type:ActionTypes.REMOVE_PRODUCT,
+        payload:id
+    }
+}

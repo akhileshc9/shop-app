@@ -6,7 +6,7 @@ import { selectedProduct, setProducts } from '../redux/actions/productActions'
 
 function ProductComponent(props) {
     const products = useSelector(state=>state.allproducts.products)
-    const renderList = products.map((product)=>{
+    const renderList = products.map((product,index)=>{
       const{
         id,
         title,
@@ -20,7 +20,7 @@ function ProductComponent(props) {
     //console.log(data)
     
   return (
-    <div className="four wide column">
+    <div key={index} className="four wide column">
       <Link to={`/productdetails/${id}`}>
             <div className="ui link cards">
                 <div className="card">
